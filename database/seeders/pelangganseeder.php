@@ -18,7 +18,29 @@ class pelangganseeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        for($m=0;$m < 250;$m++){
+        for($m=0;$m < 1111;$m++){
+
+            if($m <= 222)
+            {
+                $userid = 1;
+            }
+            elseif($m <= 222 * 2)
+            {
+                $userid = 2;
+            }
+            elseif($m <= 222 * 3)
+            {
+                $userid = 3;
+            }
+            elseif($m <= 222 * 4)
+            {
+                $userid = 4;
+            }
+            else
+            {
+                $userid = 5;
+            }
+            
             DB::table('tb_pelanggan')->insert([
                 'id_pelanggan'=>$faker->numerify('############'),
                 'nama'=>$faker->name(),
@@ -26,6 +48,7 @@ class pelangganseeder extends Seeder
                 'tarif' => $faker->randomElement(['B3' ,'S3K','L','S3','T','P2','LB3','LP2']),
                 'daya'=> $faker->numerify('######'),
                 'gardu'=>$faker->bothify('??-###'),
+                'user_id' =>  $userid,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
                 ]);
