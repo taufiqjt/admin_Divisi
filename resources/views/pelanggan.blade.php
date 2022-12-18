@@ -3,17 +3,18 @@
 <div class="row">
   <div class="col-md-12 grid-margin">
     <div class="row">
-      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+      <div class="col-12 col-xl-8 mb-2 mb-xl-0">
         <h3 class="font-weight-bold">Data Pelanggan</h3>
+        <h5 class="font-weight-normal mb-0">Admin : <span class="text-primary">{{$nama}}</span></h5>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12 my-3">
-    <form action="/pelanggan/search" method="get" class="col-10 d-flex">
+  <div class="col-md-12 mb-3">
+    <form action="/pelanggan/search" method="GET" class="col-10 d-flex">
       <input type="text" name="idpel" class="form-control rounded" placeholder="Cari bedasarkan id Pelanggan" />
-      <button type="submit" class="input-group-text bg-primary border-4" id="search-addon">
+      <button type="submit" class="input-group-text bg-primary border-4 rounded">
         <i class="ti-search text-white"></i>
       </button>
     </form>
@@ -27,8 +28,8 @@
           <i class="ti-upload"></i>Insert</button>
         </a>
         <div class="modal fade" id="insertdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="background:rgba(0, 0, 0, 0.47);" aria-hidden="false" data-backdrop="false">
-              <div class="modal-dialog modal-dialog"  role="document">
-                <div class="modal-content text-left" style="width: 100%;">
+              <div class="modal-dialog modal-dialog"  role="document" >
+                <div class="modal-content text-left p-2" style="width: 100%;">
                   <div class="modal-header bg-primary text-white">
                     <h4 class="modal-title" id="exampleModalLongTitle">Tambah Data Pelanggan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -88,8 +89,9 @@
           <i class="ti-file"></i>Upload
         </button>
       </div>
+      <p class="mt-4 text-secondary ml-2">*Klik nama pelanggan untuk melihat detail atau edit data pelanggan</p>
     <div class="table table-responsive">
-      <table class="table table-striped my-4">
+      <table class="table table-striped my-2">
         <thead>
           <tr>
             <th>ID Pelanggan</th>
@@ -139,7 +141,7 @@
                   </div>
                   <div class="modal-footer bg-light d-flex justify-content-between">
                   <a class="text-white" data-toggle="modal" title="Edit Data" data-target="#editdata{{$dt->id}}">
-                <button type="button" class="btn btn btn-outline-warning ">Edit</button>
+                <button type="button" class="btn text-dark btn btn-outline-warning ">Edit</button>
               </a>
                     <button class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
                   </div>
@@ -241,9 +243,13 @@
         @endforeach
       </tbody>
     </table>
+<div class="mt-4 d-flex justify-content-center">
 @if($search == false)
 {!! $data->links() !!}
+@else
+<a type="button" href="/pelanggan" class="btn btn-outline-dark btn-fw ml-3 mt-2">Semua Data</a>
 @endif
+</div>
         </div>
       </div>
     </div>

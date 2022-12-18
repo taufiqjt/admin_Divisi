@@ -10,22 +10,31 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Pelanggan;
 
+date_default_timezone_set("Asia/Jakarta");
+
 class PelangganController extends Controller
 {
     public function index()
     {
-            $search = false;
-            $data = Pelanggan::orderBy('id' , 'desc')->paginate(15);
 
-            return view('pelanggan' , compact('data' ,'search'));
+            $search = false;
+            $data = Pelanggan::where('user_id' , Auth::user()->id )->orderBy('id' , 'desc')->paginate(15);
+            $nama = User::where('id' , Auth::user()->id)->value('name');
+
+            return view('pelanggan' , compact('data' ,'search','nama'));
     }
 
     public function search(Request $request)
     {
-        $search = true;
-        $data = Pelanggan::where('id_pelanggan' , $request->idpel)->get();
+            $search = true;
+            $data = Pelanggan::
+            where('user_id' , Auth::user()->id )
+            ->where('id_pelanggan' , $request->idpel)
+            ->orderBy('id' , 'desc')
+            ->get();
+            $nama = User::where('id' , Auth::user()->id)->value('name');
 
-        return view('pelanggan' , compact('data' ,'search'));
+            return view('pelanggan' , compact('data' ,'search','nama'));
     }
 
     public function delete($id)
@@ -66,6 +75,6 @@ class PelangganController extends Controller
         'updated_at' => Carbon::now(),
         ]);
 
-        return redirect('/pelanggan');
+        return back();
     }
 }

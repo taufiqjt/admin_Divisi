@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
+date_default_timezone_set("Asia/Jakarta");
 class pelangganseeder extends Seeder
 {
     /**
