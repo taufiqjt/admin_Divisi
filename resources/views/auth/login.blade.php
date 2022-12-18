@@ -42,7 +42,7 @@
               <form method="POST" action="/login" class="pt-3">
                 @csrf
                 <div class="form-group">
-                  <input type="text" name="username" class="form-control form-control-lg"  placeholder="Username" required>
+                  <input type="text" name="username" class="form-control form-control-lg"  placeholder="Username" >
                 </div>
                 <div class="form-group">
                   <input type="password" name="password" id="inputpassword" class="form-control form-control-lg" placeholder="Password" required>
