@@ -17,6 +17,7 @@
       </div>
     </div>
   </div>
+  @yield('script')
   @include('include.js')
 </body>
 

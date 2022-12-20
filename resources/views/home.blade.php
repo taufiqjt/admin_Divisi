@@ -24,28 +24,32 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-5 grid-margin transparent">
-              
-                <div class="col-md-9 mb-4 stretch-card transparent">
+            <div class="col-md-5 grid-margin transparent row">
+            <div class="col-md-9 py-4 stretch-card transparent ">
+                  <div class="card card-light-danger">
+                    <div class="card-body">
+                    <p class="ml-1 mb-2">{{$username}}</p>  
+                    <p class="fs-30 mb-4">{{$nama}}</p>
+                    <a class="text-white" href="/profile">
+                              <button type="button" class="btn btn-sm shadow text-primary btn btn-light ">Edit Profile</button>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-9 py-4 stretch-card transparent ">
                   <div class="card card-dark-blue">
                     <div class="card-body">
                       <p class="mb-3">Total Data</p>
                       <p class="fs-30 mb-4">{{$sumdata}} Data</p>
                       <a class="text-white" href="/pelanggan">
-                              <button type="button" class="btn btn-sm text-primary btn btn-light ">Lihat Data Pelanggan</button>
+                              <button type="button" class="btn btn-sm shadow text-primary btn-light ">Lihat Data Pelanggan</button>
                         </a>
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-md-10 mb-4 stretch-card transparent">
-                  <div class="card card-tale">
-                    <div class="card-body">
-                      <p class="mb-4">Today’s Bookings</p>
-                      <p class="fs-30 mb-2">4006</p>
-                      <p>10.00% (30 days)</p>
-                    </div>
-                  </div>
-                </div> -->
+              </div>
+            </div>
+        
 
 </div>
 </div>
