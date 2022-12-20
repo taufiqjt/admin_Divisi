@@ -18,6 +18,7 @@ class HomeController extends Controller
     {
             $userid = Auth::user()->id;
             $nama = User::where('id' , $userid)->value('name');
+            $username = User::where('id' , $userid)->value('username');
             $today = date('d F Y');
             $day = date('N');
             if($day == '1')
@@ -61,6 +62,7 @@ class HomeController extends Controller
 
             return view('home' , compact(
                 'nama',
+                'username',
                 'today',
                 'iconday',
                 'sumdata',

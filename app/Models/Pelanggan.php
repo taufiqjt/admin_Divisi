@@ -15,6 +15,7 @@ class Pelanggan extends Model
         'alamat',
         'tarif',
         'daya',
-        'gardu'
+        'gardu',
+        'user_id'
     ];
 }

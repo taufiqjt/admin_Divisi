@@ -18,7 +18,7 @@ class PelangganController extends Controller
     {
 
             $search = false;
-            $data = Pelanggan::where('user_id' , Auth::user()->id )->orderBy('id' , 'desc')->paginate(15);
+            $data = Pelanggan::where('user_id' , Auth::user()->id )->orderBy('id' , 'desc')->paginate(50);
             $nama = User::where('id' , Auth::user()->id)->value('name');
 
             return view('pelanggan' , compact('data' ,'search','nama'));
@@ -47,6 +47,7 @@ class PelangganController extends Controller
 
     public function insert(Request $request)
     {
+        $userid = Auth::user()->id;
         pelanggan::create([
         'id_pelanggan' => $request->idpelanggan,
         'nama' => $request->nama,
@@ -54,6 +55,7 @@ class PelangganController extends Controller
         'tarif' => $request->tarif,
         'daya' => $request->daya,
         'gardu' => $request->gardu,
+        'user_id' => $userid,   
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
 
@@ -64,7 +66,7 @@ class PelangganController extends Controller
 
     public function edit(Request $request)
     {
-        pelanggan::where('id' , $request->id)
+        Pelanggan::where('id' , $request->id)
         ->update([
         'id_pelanggan' => $request->idpelanggan,
         'nama' => $request->nama,

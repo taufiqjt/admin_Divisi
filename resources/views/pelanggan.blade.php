@@ -24,12 +24,12 @@
     <div class="card-body">                
       <div class="my-2 mx-3">
       <a class="text-white" data-toggle="modal" title="Insert Data" data-target="#insertdata">
-        <button type="button" class="btn btn-outline-primary btn-icon-text" style="height: 3.2em;">
+        <button type="button" class="btn btn-inverse-primary btn-icon-text" style="height: 3.2em;">
           <i class="ti-upload"></i>Insert</button>
         </a>
         <div class="modal fade" id="insertdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="background:rgba(0, 0, 0, 0.47);" aria-hidden="false" data-backdrop="false">
               <div class="modal-dialog modal-dialog"  role="document" >
-                <div class="modal-content text-left p-2" style="width: 100%;">
+                <div class="modal-content text-left p-2 " style="width: 100%;">
                   <div class="modal-header bg-primary text-white">
                     <h4 class="modal-title" id="exampleModalLongTitle">Tambah Data Pelanggan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -85,24 +85,28 @@
                 </div>
               </div>
             </div>
-        <button type="button" class="btn btn-outline-success" style="height: 3.2em;">
-          <i class="ti-file"></i>Upload
-        </button>
       </div>
       <p class="mt-4 text-secondary ml-2">*Klik nama pelanggan untuk melihat detail atau edit data pelanggan</p>
     <div class="table table-responsive">
       <table class="table table-striped my-2">
         <thead>
           <tr>
+            <th>#</th>
             <th>ID Pelanggan</th>
             <th>Nama</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          @foreach($data as $dt)
+          <?php $no=1; ?>
+          @foreach($data as $key  => $dt)
           <tr>
-            <td style="width: 20%;">{{$dt->id_pelanggan}}</td>
+          @if($search == false)
+          <td style="width: 5%;">{{ $data->firstItem() + $key }}</td>
+          @else
+          <td style="width: 5%;">{{ $no }}</td>
+          @endif
+            <td style="width: 15%;">{{$dt->id_pelanggan}}</td>
             <td style="width: 70%;">
               <a class="text-dark" style="cursor: pointer;" data-toggle="modal" title="Show Detail" data-target="#showdetail{{$dt->id}}">
               {{$dt->nama}}
@@ -112,9 +116,9 @@
                 <div class="modal-content text-left" style="width: 100%;">
                 <div class="modal-header bg-light">
                   <div class="row">
-                <div class="col-md-12 d-flex">
-                    <h3 class="modal-title" id="exampleModalLongTitle">{{$dt->nama}}</h3>
-                    <code class="pt-3 fs-3 text-primary">({{$dt->id_pelanggan}})</code>
+                <div class="col-md-12">
+                    <h3 class="modal-title text-wrap" id="exampleModalLongTitle">{{$dt->nama}}</h3>
+                    <p class="pt-1 mb-3 fs-3 text-primary">({{$dt->id_pelanggan}})</p>
                 </div>
                 <div class="col-md-12 mt-2">
                   <i class="text-secondary"><b>Latest update:</b><small> {{$dt->updated_at}}</small></i>
@@ -141,16 +145,15 @@
                   </div>
                   <div class="modal-footer bg-light d-flex justify-content-between">
                   <a class="text-white" data-toggle="modal" title="Edit Data" data-target="#editdata{{$dt->id}}">
-                <button type="button" class="btn text-dark btn btn-outline-warning ">Edit</button>
+                <button type="button" class="btn text-dark btn btn-inverse-warning ">Edit</button>
               </a>
-                    <button class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
+                    <button class="btn btn-inverse-primary" data-dismiss="modal">Tutup</button>
                   </div>
                 </div>
               </div>
             </div>
             </td>
             <td style="width: 10%;">
-              
               <div class="modal fade" id="editdata{{$dt->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="background:rgba(0, 0, 0, 0.47);" aria-hidden="false" data-backdrop="false">
               <div class="modal-dialog modal-dialog"  role="document">
                 <div class="modal-content text-left" style="width: 100%;">
@@ -212,7 +215,7 @@
             </div>
 
               <a class="text-white" data-toggle="modal" title="Delete Data" data-target="#deletedata{{$dt->id}}">
-                <button type="button" class="btn btn-danger text-center py-2">Delete</button>
+                <button type="button" class="btn btn-outline-danger shadow text-center py-2">Delete</button>
               </a>
             </td>
             <div class="modal fade" id="deletedata{{$dt->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="background:rgba(0, 0, 0, 0.47);" aria-hidden="false" data-backdrop="false">
@@ -229,10 +232,10 @@
                   </div>
                   <div class="modal-footer">
                     <a class="text-white">
-                      <button type="button" class="btn btn-outline-primary text-center py-2" data-dismiss="modal" aria-label="Close">Batalkan</button>
+                      <button type="button" class="btn btn-inverse-primary text-center py-2" data-dismiss="modal" aria-label="Close">Batalkan</button>
                     </a>
                     <a class="text-white" onclick="myFunction()" href="/pelanggan/delete/{{$dt->id}}">
-                      <button type="button" class="btn btn-outline-danger text-center py-2">Hapus</button>
+                      <button type="button" class="btn btn-inverse-danger text-center py-2">Hapus</button>
                     </a>
 
                   </div>
@@ -240,6 +243,7 @@
               </div>
             </div>    
           </tr>
+          <?php $no++ ?>
         @endforeach
       </tbody>
     </table>
