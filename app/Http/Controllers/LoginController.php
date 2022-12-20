@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
+date_default_timezone_set("Asia/Jakarta");
+
 class LoginController extends Controller
 {
     public function index()
@@ -25,7 +27,7 @@ class LoginController extends Controller
             return redirect()->intended('/home');
         }
  
-        return back()->with('loginError', 'Login failed');
+        return redirect()->back()->with('failedlogin', 'Your credetials doesnt match our record');   
     }
 
     public function logout(Request $request)

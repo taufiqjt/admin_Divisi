@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('daya');
             $table->string('gardu');
             $table->unsignedBigInteger('user_id');
-            $table->foregin('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

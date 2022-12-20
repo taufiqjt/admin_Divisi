@@ -30,14 +30,23 @@
                 <img src="../../images/Logo_PLN.png" alt="logo">
               </div>
               
+              @if (\Session::has('failedlogin'))
+    <div class="alert alert-danger d-flex">
+    <i class="ti-alert m-1"></i>
+            <p>{!! \Session::get('failedlogin') !!}</p>
+    </div>
+@else
               <h6 class="font-weight-light">Sign in to continue.</h6>
+              @endif  
+              
               <form method="POST" action="/login" class="pt-3">
                 @csrf
                 <div class="form-group">
-                  <input type="text" name="username" class="form-control form-control-lg"  placeholder="Username">
+                  <input type="text" name="username" class="form-control form-control-lg"  placeholder="Username" >
                 </div>
                 <div class="form-group">
-                  <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
+                  <input type="password" name="password" id="inputpassword" class="form-control form-control-lg" placeholder="Password" required>
+                  <input type="checkbox"class="mx-2 my-3" onclick="myFunction()">Show Password
                 </div>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
@@ -66,6 +75,17 @@
   <script src="../../js/settings.js"></script>
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("inputpassword");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+}
+    </script>
 </body>
 
 </html>

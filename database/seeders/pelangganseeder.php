@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
+date_default_timezone_set("Asia/Jakarta");
 class pelangganseeder extends Seeder
 {
     /**
@@ -17,18 +18,41 @@ class pelangganseeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-        for($m=0;$m < 250;$m++){
-            DB::table('tb_pelanggan')->insert([
-                'id_pelanggan'=>$faker->numerify('############'),
-                'nama'=>$faker->name(),
-                'alamat'=>$faker->address(),
-                'tarif' => $faker->randomElement(['B3' ,'S3K','L','S3','T','P2','LB3','LP2']),
-                'daya'=> $faker->numerify('######'),
-                'gardu'=>$faker->bothify('??-###'),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-                ]);
-        }
+        // $faker = Faker::create('id_ID');
+        // for($m=0;$m < 2;$m++){
+
+        //     if($m <= 222)
+        //     {
+        //         $userid = 1;
+        //     }
+        //     elseif($m <= 222 * 2)
+        //     {
+        //         $userid = 2;
+        //     }
+        //     elseif($m <= 222 * 3)
+        //     {
+        //         $userid = 3;
+        //     }
+        //     elseif($m <= 222 * 4)
+        //     {
+        //         $userid = 4;
+        //     }
+        //     else
+        //     {
+        //         $userid = 5;
+        //     }
+            
+        //     DB::table('tb_pelanggan')->insert([
+        //         'id_pelanggan'=>$faker->numerify('############'),
+        //         'nama'=>$faker->name(),
+        //         'alamat'=>$faker->address(),
+        //         'tarif' => $faker->randomElement(['B3' ,'S3K','L','S3','T','P2','LB3','LP2']),
+        //         'daya'=> $faker->numerify('######'),
+        //         'gardu'=>$faker->bothify('??-###'),
+        //         'user_id' =>  1,
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now()
+        //         ]);
+        // }
     }
 }
