@@ -7,6 +7,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/profile">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/pelanggan">
               <i class="icon-layout menu-icon" ></i>
               <span class="menu-title">Data Pelanggan</span>
